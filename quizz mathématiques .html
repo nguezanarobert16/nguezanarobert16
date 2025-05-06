@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Opérations Mathématiques</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #aaa;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    button {
+      margin: 5px 0;
+      padding: 10px;
+      width: 100%;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #bonneReponse {
+      margin-top: 10px;
+      color: blue;
+    }
+
+    #resultat {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz Mathématique</h1>
+
+    <label for="operation">Choisir une opération :</label>
+    <select id="operation">
+      <option value="add">Addition</option>
+      <option value="sub">Soustraction</option>
+      <option value="mul">Multiplication</option>
+      <option value="div">Division</option>
+    </select>
+
+    <button onclick="genererQuestion()">Nouvelle Question</button>
+
+    <div id="quiz" style="display: none;">
+      <p id="question"></p>
+      <input type="number" id="reponse" placeholder="Votre réponse">
+      <button onclick="verifier()">Vérifier</button>
+      <button onclick="montrerReponse()">Voir la réponse</button>
+      <p id="resultat"></p>
+      <p id="bonneReponse"></p>
+    </div>
+  </div>
+
+  <script>
+    let nombre1, nombre2, operationCourante, resultatAttendu;
+
+    function genererQuestion() {
+      const operation = document.getElementById('operation').value;
+      nombre1 = Math.floor(Math.random() * 10) + 1;
+      nombre2 = Math.floor(Math.random() * 10) + 1;
+
+      operationCourante = operation;
+
+      switch (operation) {
+        case 'add':
+          resultatAttendu = nombre1 + nombre2;
+          afficherQuestion(`${nombre1} + ${nombre2} = ?`);
+          break;
+        case 'sub':
+          if (nombre1 < nombre2) [nombre1, nombre2] = [nombre2, nombre1];
+          resultatAttendu = nombre1 - nombre2;
+          afficherQuestion(`${nombre1} - ${nombre2} = ?`);
+          break;
+        case 'mul':
+          resultatAttendu = nombre1 * nombre2;
+          afficherQuestion(`${nombre1} × ${nombre2} = ?`);
+          break;
+        case 'div':
+          resultatAttendu = nombre1;
+          nombre1 = nombre1 * nombre2;
+          afficherQuestion(`${nombre1} ÷ ${nombre2} = ?`);
+          break;
+      }
+
+      document.getElementById('reponse').value = '';
+      document.getElementById('resultat').textContent = '';
+      document.getElementById('bonneReponse').textContent = '';
+      document.getElementById('quiz').style.display = 'block';
+    }
+
+    function afficherQuestion(text) {
+      document.getElementById('question').textContent = text;
+    }
+
+    function verifier() {
+      const reponseUtilisateur = parseInt(document.getElementById('reponse').value);
+      const result = document.getElementById('resultat');
+      if (reponseUtilisateur === resultatAttendu) {
+        result.textContent = "Bonne réponse !";
+        result.style.color = "green";
+      } else {
+        result.textContent = "Mauvaise réponse.";
+        result.style.color = "red";
+      }
+    }
+
+    function montrerReponse() {
+      document.getElementById('bonneReponse').textContent = `La bonne réponse est : ${resultatAttendu}`;
+    }
+  </script>
+</body>
+</html>
