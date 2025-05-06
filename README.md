@@ -1,12 +1,13 @@
-- 👋 Hi, I’m @nguezanarobert16
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+**Nguezana Robert**  
+Passionné par le développement web et l'IA.  
+Débutant en **HTML, CSS, JavaScript**,  
+je construis des projets pour progresser.  
+Curieux des nouvelles technologies,  
+j’explore aussi l’intelligence artificielle.  
+Objectif : devenir développeur full-stack.  
+Ouvert aux collaborations et conseils !  
 
-<!---
-nguezanarobert16/nguezanarobert16 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+*"Code, apprends, répète."*  
+
+🔗 Contact : nguezanarobert16@gmail.com
+
